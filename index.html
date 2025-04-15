@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOVA-IA | Transformación Digital con Propósito</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-steel-blue: #486D87;
+            --color-pure-white: #FFFFFF;
+            --color-light-gray: #EAECEE;
+            --color-soft-blue: #A4C8E1;
+            --color-olive: #B6C9A9;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .gradient-mesh {
+            background: radial-gradient(circle at 10% 20%, var(--color-steel-blue) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, var(--color-soft-blue) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, var(--color-olive) 0%, transparent 50%);
+            background-size: 200% 200%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-steel-blue), var(--color-soft-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hexagon {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        .wave-bottom {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23486D87' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        .blob-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            filter: blur(50px);
+            opacity: 0.5;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 80% 20%, var(--color-soft-blue) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, var(--color-olive) 0%, transparent 50%);
+            animation: blobMove 20s ease-in-out infinite;
+        }
+
+        @keyframes blobMove {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .scroll-indicator {
+            animation: scrollDown 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-[#486D87]">INNOVA-IA</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#manifiesto" class="text-[#486D87] hover:text-[#A4C8E1]">Manifiesto</a>
+                    <a href="#solutions" class="text-[#486D87] hover:text-[#A4C8E1]">Soluciones</a>
+                    <a href="#impact" class="text-[#486D87] hover:text-[#A4C8E1]">Impacto</a>
+                </div>
+                <a href="#contact" class="bg-[#486D87] text-white px-6 py-2 rounded-full hover:bg-[#A4C8E1] transition duration-300">
+                    Iniciar Transformación
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen relative overflow-hidden gradient-mesh">
+        <div class="blob-bg"></div>
+        <div class="container mx-auto px-4 pt-32 pb-20">
+            <div class="max-w-5xl mx-auto text-center relative">
+                <div class="mb-8">
+                    <span class="inline-block bg-white/10 backdrop-blur-sm text-[#486D87] px-6 py-2 rounded-full text-sm font-medium mb-4">
+                        Resolvemos lo que importa, con inteligencia e innovación
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight text-white">
+                    Transformamos empresas con 
+                    <span class="relative">
+                        <span class="text-[#A4C8E1]">IA humana</span>
+                        <svg class="absolute -bottom-4 left-0 w-full" viewBox="0 0 100 10">
+                            <path d="M0,5 Q25,0 50,5 T100,5" fill="none" stroke="#B6C9A9" stroke-width="2"/>
+                        </svg>
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto">
+                    Combinamos la potencia de la IA con la creatividad humana para impulsar 
+                    la transformación digital de las PyMEs en Latinoamérica.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="#contact" class="group relative px-8 py-4 bg-white text-[#486D87] rounded-full text-lg font-semibold hover:bg-[#A4C8E1] hover:text-white transition duration-300">
+                        <span class="relative z-10">Inicia tu Transformación</span>
+                        <span class="absolute inset-0 rounded-full bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                    <a href="#manifiesto" class="px-8 py-4 border-2 border-white text-white rounded-full text-lg font-semibold hover:bg-white hover:text-[#486D87] transition duration-300">
+                        Conoce Nuestro Manifiesto
+                    </a>
+                </div>
+            </div>
+            <div class="mt-20 relative">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-80">
+                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" alt="Empresa 1" class="w-32 h-32 object-cover rounded-full grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg" alt="Empresa 2" class="w-32 h-32 object-cover rounded-full grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg" alt="Empresa 3" class="w-32 h-32 object-cover rounded-full grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg" alt="Empresa 4" class="w-32 h-32 object-cover rounded-full grayscale hover:grayscale-0 transition duration-300">
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <i class="fas fa-chevron-down text-white/50 text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- Manifiesto Section -->
+    <section id="manifiesto" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="inline-block bg-[#EAECEE] text-[#486D87] px-6 py-2 rounded-full text-sm font-medium mb-4">
+                        Nuestro Manifiesto
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-[#486D87]">
+                        La tecnología al servicio de las personas
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            En InnovaIA creemos que la tecnología no tiene sentido si no está al servicio de las personas. 
+                            Combinamos la inteligencia artificial con la creatividad humana para resolver lo que verdaderamente importa.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Nos inspira cada organización que busca hacer las cosas mejor. Diseñamos soluciones innovadoras 
+                            que se integran con sus procesos, respetan su cultura y potencian su propósito.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-[#A4C8E1] flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-white text-xl"></i>
+                            </div>
+                            <p class="text-lg font-medium text-[#486D87]">
+                                No vendemos herramientas. Entregamos resultados.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="hexagon bg-[#486D87] p-6 text-center text-white">
+                            <i class="fas fa-brain text-3xl mb-4"></i>
+                            <p class="font-medium">Innovación</p>
+                        </div>
+                        <div class="hexagon bg-[#A4C8E1] p-6 text-center text-white">
+                            <i class="fas fa-eye text-3xl mb-4"></i>
+                            <p class="font-medium">Transparencia</p>
+                        </div>
+                        <div class="hexagon bg-[#B6C9A9] p-6 text-center text-white">
+                            <i class="fas fa-bolt text-3xl mb-4"></i>
+                            <p class="font-medium">Eficiencia</p>
+                        </div>
+                        <div class="hexagon bg-[#486D87] p-6 text-center text-white">
+                            <i class="fas fa-heart text-3xl mb-4"></i>
+                            <p class="font-medium">Impacto Social</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="py-20 bg-[#EAECEE] relative overflow-hidden">
+        <div class="blob-bg"></div>
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-white text-[#486D87] px-6 py-2 rounded-full text-sm font-medium mb-4">
+                    Nuestras Soluciones
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-[#486D87]">
+                    Inteligencia que transforma
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Solution Card 1 -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="h-48 mb-6 relative overflow-hidden rounded-xl">
+                        <img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg" 
+                             alt="Automatización Inteligente" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#486D87]/80 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Automatización Inteligente</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Optimiza tus procesos con IA que aprende y se adapta a tu negocio.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Reducción de tareas manuales</span>
+                        </li>
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Análisis predictivo</span>
+                        </li>
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Integración seamless</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution Card 2 -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="h-48 mb-6 relative overflow-hidden rounded-xl">
+                        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" 
+                             alt="Asistentes Virtuales" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#486D87]/80 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Asistentes Virtuales</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Chatbots inteligentes que entienden y resuelven consultas 24/7.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Atención personalizada</span>
+                        </li>
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Aprendizaje continuo</span>
+                        </li>
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Multicanal</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution Card 3 -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="h-48 mb-6 relative overflow-hidden rounded-xl">
+                        <img src="https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg" 
+                             alt="Análisis Predictivo" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#486D87]/80 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Análisis Predictivo</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Anticipa tendencias y toma decisiones informadas con datos.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Visualización avanzada</span>
+                        </li>
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Modelos personalizados</span>
+                        </li>
+                        <li class="flex items-center text-[#486D87]">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Reportes automáticos</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-[#EAECEE] text-[#486D87] px-6 py-2 rounded-full text-sm font-medium mb-4">
+                    Nuestro Impacto
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-[#486D87]">
+                    Transformación con resultados
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg" 
+                                 alt="Cliente" 
+                                 class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold text-[#486D87]">María González</h4>
+                                <p class="text-sm text-gray-600">CEO, TechStart</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "InnovaIA transformó nuestra operación. Redujimos costos en un 40% y 
+                            mejoramos la satisfacción de nuestros clientes significativamente."
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <img src="https://images.pexels.com/photos/3184603/pexels-photo-3184603.jpeg" 
+                                 alt="Cliente" 
+                                 class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold text-[#486D87]">Carlos Ruiz</h4>
+                                <p class="text-sm text-gray-600">Director, InnovaSoft</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 italic">
+                            "La implementación fue sorprendentemente sencilla y los resultados, 
+                            extraordinarios. Ahora tomamos decisiones basadas en datos reales."
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="text-center p-6 bg-[#486D87] rounded-xl text-white">
+                        <div class="text-4xl font-bold mb-2">40%</div>
+                        <p class="text-sm">Reducción de costos operativos</p>
+                    </div>
+                    <div class="text-center p-6 bg-[#A4C8E1] rounded-xl text-white">
+                        <div class="text-4xl font-bold mb-2">60%</div>
+                        <p class="text-sm">Mejora en productividad</p>
+                    </div>
+                    <div class="text-center p-6 bg-[#B6C9A9] rounded-xl text-white">
+                        <div class="text-4xl font-bold mb-2">85%</div>
+                        <p class="text-sm">Satisfacción del cliente</p>
+                    </div>
+                    <div class="text-center p-6 bg-[#486D87] rounded-xl text-white">
+                        <div class="text-4xl font-bold mb-2">200+</div>
+                        <p class="text-sm">Empresas transformadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#486D87] relative overflow-hidden">
+        <div class="blob-bg"></div>
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl p-8 md:p-12 shadow-xl relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#486D87]">
+                        Inicia tu transformación digital
+                    </h2>
+                    <p class="text-gray-600">
+                        Agenda una consultoría personalizada y descubre cómo podemos potenciar tu empresa
+                    </p>
+                </div>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#486D87]">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#486D87]">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+                        <input type="text" id="company" name="company" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#486D87]">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">¿Qué te gustaría transformar?</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#486D87]"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-[#486D87] text-white font-semibold py-4 rounded-lg transition duration-300 hover:bg-[#A4C8E1]">
+                        Solicitar Consultoría
+                    </button>
+                    <div id="formMessage" class="hidden"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#EAECEE] py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-[#486D87]">INNOVA-IA</h4>
+                    <p class="text-gray-600">
+                        Transformando empresas con automatización inteligente y propósito.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-[#486D87]">Soluciones</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-[#486D87]">Automatización Inteligente</a></li>
+                        <li><a href="#" class="hover:text-[#486D87]">Asistentes Virtuales</a></li>
+                        <li><a href="#" class="hover:text-[#486D87]">Análisis Predictivo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-[#486D87]">Empresa</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-[#486D87]">Sobre Nosotros</a></li>
+                        <li><a href="#" class="hover:text-[#486D87]">Blog</a></li>
+                        <li><a href="#" class="hover:text-[#486D87]">Carreras</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-[#486D87]">Contacto</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>Gianmarco Ramos</li>
+                        <li>gianmarco@innova.ia.pro</li>
+                        <li>954715275</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-300">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-600">&copy; 2024 INNOVA-IA. Todos los derechos reservados.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-600 hover:text-[#486D87]"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-[#486D87]"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-[#486D87]"><i class="fab fa-facebook"></i></a>
+                        <a href="#
